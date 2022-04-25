@@ -1,0 +1,2 @@
+# Sermo
+Simple messenger App
