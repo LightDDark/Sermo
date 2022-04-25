@@ -1,2 +1,2 @@
 # Sermo
-Simple messenger App
+Simple chatting app
