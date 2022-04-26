@@ -1,11 +1,11 @@
 .Forms {
-  /* background-image: url(background.jpeg); */
+  background-image: url(background.jpeg);
   background-position: right bottom, left top;
   text-align: left;
   background-size: contain;
   display: block;
   margin: 70px 250px;
-  padding: 100px 100px;
+  padding: 50px 100px;
   border-radius: 50px;
 }
 .Welcome {

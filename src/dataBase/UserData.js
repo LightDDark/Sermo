@@ -5,10 +5,17 @@ class UserData extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: new Map(),
+      users: new Map().set(
+          'orYe',
+          new User({userName: 'orYe', password: '12345', nickName: 'Or'})).set('maayanSh',
+          new User({userName: 'maayanSh', password: '54321', nickName: 'Maayan'})).set('niceBo',
+          new User({userName: 'niceBo', password: '55555', nickName: 'Bodek'}))
     };
   }
 
+  getUser({userName}){
+    return this.state.users.get(userName);
+  }
   addUser({ userName, password, nickName }) {
     if (this.state.users.has(userName)) {
       console.log("Error, userName already in use.");
@@ -38,6 +45,6 @@ class UserData extends React.Component {
   }
 }
 
-var users = new UserData();
+const users = new UserData();
 
 export default users;

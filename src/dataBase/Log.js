@@ -4,12 +4,12 @@ import HandleContent from "./HandleContent";
 // class to store chat logs
 class Log extends React.Component {
   // gets the users in chat and if private chat or group
-  constructor(props) {
-    super(props);
+  constructor(users,isPrivate) {
+    super(users,isPrivate);
     this.state = {
-      userSet: new Set().add(props.users),
+      userSet: new Set().add(users),
       messages: [],
-      isPrivate: props.isPrivate,
+      isPrivate: isPrivate,
     };
   }
 
@@ -56,3 +56,4 @@ class Log extends React.Component {
     return messages;
   }
 }
+export default Log;
