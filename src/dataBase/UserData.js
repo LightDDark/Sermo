@@ -5,6 +5,9 @@ class UserData {
     this.users = new Map();
   }
 
+  getUser(userName) {
+    return this.users.get(userName);
+  }
   addUser(userName, password, nickName) {
     if (this.users.has(userName)) {
       console.log("Error, userName already in use.");
@@ -27,6 +30,6 @@ class UserData {
   }
 }
 
-var users = new UserData();
+const users = new UserData();
 
 export default users;

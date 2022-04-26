@@ -1,20 +1,17 @@
 import "./App.css";
-import Login from "./startPage/Login";
-// ----------------------------------
-import SideBar from "./chatPage/SideBar";
-import User from "./dataBase/User";
+import SubChat from "./chatPage/SubChat";
+import Log from "./dataBase/Log";
+import users from "./dataBase/UserData";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+  const user1 = users.getUser("maayanSh");
+  const user2 = users.getUser("orYe");
+  const logData = <Log users={[user1, user2]} isPrivate={true} />;
   return (
     <div className="App">
       <header className="App-header">
-        <SideBar
-          contacts={[
-            new User("s", "s", "s"),
-            new User("sa", "sa", "sa"),
-            new User("sb", "sb", "sb"),
-          ]}
-        />
+        <SubChat logDB={logData} user={user1} />
       </header>
     </div>
   );
