@@ -5,9 +5,9 @@ import users from "./dataBase/UserData";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  const user1 = users.getUser("maayanSh");
-  const user2 = users.getUser("orYe");
-  const logData = <Log users={[user1, user2]} isPrivate={true} />;
+  const user1 = users.getUser('maayanSh');
+  const user2 = users.getUser('orYe');
+  const logData = <Log users={[user1, user2]} isPrivate={true} messages={[]} />;
   return (
     <div className="App">
       <header className="App-header">

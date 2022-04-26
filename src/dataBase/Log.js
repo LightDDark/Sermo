@@ -3,9 +3,9 @@ import HandleContent from "./HandleContent";
 // class to store chat logs
 class Log {
   // gets the users in chat and if private chat or group
-  constructor(users, isPrivate) {
+  constructor(users, isPrivate,messages) {
     this.userSet = users;
-    this.messages = [];
+    this.messages = messages;
     this.isPrivate = isPrivate;
   }
 
@@ -23,7 +23,7 @@ class Log {
     this.messages = current;
   }
 
-  addUser({ userName }) {
+  addContact({ userName }) {
     const current = this.userSet;
     if (this.isPrivate) {
       return;

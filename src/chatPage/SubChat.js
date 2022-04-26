@@ -1,15 +1,15 @@
 import React, { useRef } from "react";
 import "./subChat.css"
+import NewMessage from "../dataBase/NewMessage";
 
 function SubChat(props){
     const message = useRef(null);
-    const m = props.user.state.nickName;
+    const m = props.user.userName.nickName;
     const us = props.user;
     const sendTextMessage = function (type){
         const msg = message.current.value;
-        props.logDB.newMessage({type,msg,us});
+        NewMessage(props.logDB,type,msg,us);
     }
-    
             return (
                 <div className="container">
                         <h1 className="h3 mb-3">Messages</h1>
