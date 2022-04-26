@@ -31,8 +31,23 @@ function SideBar(props) {
       </li>
     );
   });
+  var popover = new bootstrap.Popover(
+    document.querySelector(".example-popover"),
+    {
+      container: "body",
+    }
+  );
   return (
     <div>
+      <button
+        type="button"
+        className="btn btn-lg btn-danger"
+        data-bs-toggle="popover"
+        title="Popover title"
+        data-bs-content="And here's some amazing content. It's very engaging. Right?"
+      >
+        Click to toggle popover
+      </button>
       <SearchBar doSearch={doSearch} />
       <ul className="list-group">{listContacts}</ul>
     </div>

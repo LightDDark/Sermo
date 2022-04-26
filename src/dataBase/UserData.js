@@ -5,25 +5,21 @@ class UserData {
     this.users = new Map();
   }
 
-  addUser({ userName, password, nickName }) {
-    if (this.state.users.has(userName)) {
+  addUser(userName, password, nickName) {
+    if (this.users.has(userName)) {
       console.log("Error, userName already in use.");
     } else {
-      const users = this.state.users;
+      const users = this.users;
       users.set(userName, new User(userName, password, nickName));
-      this.setState({
-        users: users,
-      });
+      this.users = users;
     }
   }
 
-  login({ userName, password }) {
+  login(userName, password) {
     console.log(userName, password);
-    if (!this.state.users.has(userName)) {
+    if (!this.users.has(userName)) {
       console.log("Error, userName not found.");
-    } else if (
-      this.state.users.get(userName).validatePass({ password: password })
-    ) {
+    } else if (this.users.get(userName).validatePass(password)) {
       console.log("Login Successful.");
     } else {
       console.log("Wrong Password!");
