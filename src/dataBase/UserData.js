@@ -1,12 +1,8 @@
-import React from "react";
 import User from "./User";
 
-class UserData extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      users: new Map(),
-    };
+class UserData {
+  constructor() {
+    this.users = new Map();
   }
 
   addUser({ userName, password, nickName }) {
@@ -14,10 +10,7 @@ class UserData extends React.Component {
       console.log("Error, userName already in use.");
     } else {
       const users = this.state.users;
-      users.set(
-        userName,
-        new User({ userName: userName, password: password, nickName: nickName })
-      );
+      users.set(userName, new User(userName, password, nickName));
       this.setState({
         users: users,
       });

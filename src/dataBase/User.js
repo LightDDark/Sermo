@@ -1,21 +1,16 @@
-import React from "react";
-
-class User extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userName: props.userName,
-      password: props.password,
-      nickName: props.nickName,
-      contacts: new Set(),
-    };
+class User {
+  constructor(userName, password, nickName) {
+    this.userName = userName;
+    this.password = password;
+    this.nickName = nickName;
+    this.contacts = [];
   }
 
-  validatePass({ password }) {
+  validatePass(password) {
     return this.state.password === password;
   }
 
-  addContact({ userName }) {
+  addContact(userName) {
     const current = this.state.contacts;
     if (current.has(userName)) {
       console.log("Conntact already exists");
@@ -26,6 +21,10 @@ class User extends React.Component {
       });
       console.log(userName + "added succefuly.");
     }
+  }
+
+  getName() {
+    return this.userName;
   }
 }
 

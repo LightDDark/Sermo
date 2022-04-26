@@ -10,10 +10,7 @@ function Login() {
     if (pass.current.value === "" || user.current.value === "") {
       console.log("Error, cannot have empty fields.");
     } else {
-      users.login({
-        userName: user.current.value,
-        password: pass.current.value,
-      });
+      users.login(user.current.value, pass.current.value);
     }
   };
   return (
