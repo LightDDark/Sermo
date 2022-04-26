@@ -31,12 +31,6 @@ function SideBar(props) {
       </li>
     );
   });
-  var popover = new bootstrap.Popover(
-    document.querySelector(".example-popover"),
-    {
-      container: "body",
-    }
-  );
   return (
     <div>
       <button
