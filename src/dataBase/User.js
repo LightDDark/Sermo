@@ -1,3 +1,6 @@
+import Log from "./Log";
+import logs from "./LogData";
+
 class User {
   constructor(userName, password, nickName) {
     this.userName = userName;
@@ -10,21 +13,28 @@ class User {
     return this.state.password === password;
   }
 
-  addContact(userName) {
-    const current = this.state.contacts;
-    if (current.has(userName)) {
+  addContact(user) {
+    if (this.contacts.includes(user)) {
       console.log("Conntact already exists");
     } else {
-      current.add(userName);
-      this.setState({
-        contacts: current,
-      });
-      console.log(userName + "added succefuly.");
+      const current = this.contacts.slice().concat([user]);
+      this.contacts = current;
+      logs.addLog(new Log([this.getName(), user.getName()], true));
+      console.log(user.getName() + " added succefuly.");
     }
+    return this;
   }
 
   getName() {
     return this.userName;
+  }
+
+  getNickName() {
+    return this.nickName;
+  }
+
+  getContacts() {
+    return this.contacts.slice();
   }
 }
 

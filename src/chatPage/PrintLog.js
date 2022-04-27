@@ -1,7 +1,7 @@
-function PrintLog({ userName, log }) {
-  const messages = log.getMessages().map((msg, index) => {
+function PrintLog(props) {
+  const messages = props.log.getMessages().map((msg, index) => {
     const classer =
-      msg.user === userName ? "Container Mine" : "Container Other";
+      msg.user === props.userName ? "Container Mine" : "Container Other";
     const timer = msg.date.getHours() + ":" + msg.date.getMinutes();
     return (
       <div class={classer}>
