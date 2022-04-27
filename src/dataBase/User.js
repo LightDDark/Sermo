@@ -14,7 +14,9 @@ class User {
   }
 
   addContact(user) {
-    if (this.contacts.includes(user)) {
+    if (!user) {
+      console.log("user is indefined");
+    } else if (this.contacts.includes(user)) {
       console.log("Conntact already exists");
     } else {
       const current = this.contacts.slice().concat([user]);

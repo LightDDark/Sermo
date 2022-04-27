@@ -25,6 +25,7 @@ function MainChat(props) {
           <h2>Contacts</h2>
           <SideBar
             contacts={user.getContacts()}
+            user={user}
             active={[activeContact, setActiveContact]}
           />
         </div>
