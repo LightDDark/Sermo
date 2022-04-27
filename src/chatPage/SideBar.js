@@ -1,12 +1,12 @@
 import { useState } from "react";
 import SearchBar from "./SearchBar";
-import User from "../dataBase/User";
+import logs from "../dataBase/LogData";
 
 function SideBar(props) {
   const contacts = props.contacts;
+  const [activeContact, setActiveContact] = props.active;
   const [contactList, setContactList] = useState(contacts);
-  const nullUser = new User("", "", "");
-  const [activeContact, setActiveContact] = useState(nullUser);
+
   const doSearch = function (query) {
     setContactList(
       contacts.filter((contact) => contact.getName().includes(query))
@@ -14,23 +14,24 @@ function SideBar(props) {
   };
   const listContacts = contactList.map((contact, index) => {
     const changeActive = function (contact) {
-      setActiveContact(contact);
+      setActiveContact([contact, logs.getLog([contact])]);
     };
     return (
       <li
         className={
-          contact === activeContact
+          contact === activeContact[0]
             ? "list-group-item active"
             : "list-group-item"
         }
-        aria-current={contact === activeContact ? "true" : "false"}
+        aria-current={contact === activeContact[0] ? "true" : "false"}
         onClick={() => changeActive(contact)}
         key={index}
       >
-        {contact.getName()}
+        {contact.getNickName()}
       </li>
     );
   });
+
   return (
     <div>
       <SearchBar doSearch={doSearch} />

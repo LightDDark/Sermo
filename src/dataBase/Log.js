@@ -3,36 +3,51 @@ import HandleContent from "./HandleContent";
 // class to store chat logs
 class Log {
   // gets the users in chat and if private chat or group
-  constructor(users, isPrivate,messages) {
-    this.userSet = users;
-    this.messages = messages;
+  constructor(userNames, isPrivate) {
+    this.userNames = userNames;
+    this.messages = [];
     this.isPrivate = isPrivate;
   }
 
-  newMessage(type, content, user) {
-    const current = this.messages.slice();
+  newMessage(type, content, userName) {
+    if (!this.userNames.includes(userName)) {
+      return;
+    }
     const handeledContent = <HandleContent type={type} content={content} />;
-    current.concat([
+    const current = this.messages.slice().concat([
       {
         type: type,
         content: handeledContent,
-        user: user,
+        user: userName,
         date: new Date(),
       },
     ]);
     this.messages = current;
   }
 
-  addContact({ userName }) {
-    const current = this.userSet;
+  addUser(userName) {
+    const current = this.userNames;
     if (this.isPrivate) {
       return;
     } else if (current.has(userName)) {
       console.log("User already in group");
     } else {
       current.add(userName);
+      this.userNames = current;
       console.log(userName + "added to group");
     }
+  }
+
+  getUserNames() {
+    return this.userNames;
+  }
+
+  getIsPrivate() {
+    return this.isPrivate;
+  }
+
+  getMessages() {
+    return this.messages.slice();
   }
 }
 export default Log;

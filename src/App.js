@@ -1,18 +1,13 @@
 import "./App.css";
-import SubChat from "./chatPage/SubChat";
-import Log from "./dataBase/Log";
-import users from "./dataBase/UserData";
 import "bootstrap/dist/css/bootstrap.min.css";
+import users from "./dataBase/UserData";
+import MainChat from "./chatPage/MainChat";
 
 function App() {
-  const user1 = users.getUser('maayanSh');
-  const user2 = users.getUser('orYe');
-  const logData = <Log users={[user1, user2]} isPrivate={true} messages={[]} />;
+  const user = users.getUser("orYe");
   return (
     <div className="App">
-      <header className="App-header">
-        <SubChat logDB={logData} user={user1} />
-      </header>
+      <MainChat user={user} />
     </div>
   );
 }
