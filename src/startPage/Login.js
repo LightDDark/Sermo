@@ -1,21 +1,24 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import users from "../dataBase/UserData";
 import "./startPage.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 function Login(props) {
   const setLoggedUser = props.setLoggedUser;
   const pass = useRef(null);
   const user = useRef(null);
+  const [nav, setNav] = useState("");
   const loginUser = function () {
     if (pass.current.value === "" || user.current.value === "") {
       console.log("Error, cannot have empty fields.");
     } else {
       setLoggedUser(users.login(user.current.value, pass.current.value));
+      setNav(<Navigate to="chat" />);
     }
   };
   return (
     <div className="Forms">
+      {nav}
       <label className={"Welcome"}>Welcome to Sermo</label>
       <div className="User">
         <label htmlFor="formGroupExampleInput" className="form-label">

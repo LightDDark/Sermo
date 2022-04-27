@@ -11,7 +11,7 @@ class User {
   }
 
   validatePass(password) {
-    return this.state.password === password;
+    return this.password === password;
   }
 
   addContact(user) {

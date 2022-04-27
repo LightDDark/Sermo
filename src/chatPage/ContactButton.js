@@ -34,7 +34,7 @@ function ContactButton(props) {
         onHide={handleClose}
         onExited={() => setValidated(true)}
       >
-        <Form noValidate onSubmit={handleAdd}>
+        <Form onSubmit={handleAdd}>
           <Modal.Header closeButton>
             <Modal.Title>Contact Details</Modal.Title>
           </Modal.Header>
@@ -44,7 +44,7 @@ function ContactButton(props) {
               <Form.Label>UserName</Form.Label>
               <Form.Control
                 ref={contact}
-                type="text"
+                type="username"
                 placeholder="Enter User Id"
                 isInvalid={!validated}
                 required

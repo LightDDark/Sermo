@@ -5,6 +5,7 @@ import ProtectedRoute from "./startPage/ProtectedRoute";
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import Login from "./startPage/Login";
+import Register from "./startPage/Register";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState(null);
@@ -12,6 +13,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Login setLoggedUser={setLoggedUser} />} />
+        <Route path="register" element={<Register />} />
         <Route
           path="chat"
           element={

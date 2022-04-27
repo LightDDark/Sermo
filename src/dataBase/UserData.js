@@ -31,7 +31,7 @@ class UserData {
   login(userName, password) {
     console.log(userName, password);
     const user = this.users.get(userName);
-    if (user) {
+    if (!user) {
       console.log("Error, userName not found.");
     } else if (user.validatePass(password)) {
       console.log("Login Successful.");
