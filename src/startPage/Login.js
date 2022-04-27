@@ -3,14 +3,15 @@ import users from "../dataBase/UserData";
 import "./startPage.css";
 import { Link } from "react-router-dom";
 
-function Login() {
+function Login(props) {
+  const setLoggedUser = props.setLoggedUser;
   const pass = useRef(null);
   const user = useRef(null);
   const loginUser = function () {
     if (pass.current.value === "" || user.current.value === "") {
       console.log("Error, cannot have empty fields.");
     } else {
-      users.login(user.current.value, pass.current.value);
+      setLoggedUser(users.login(user.current.value, pass.current.value));
     }
   };
   return (

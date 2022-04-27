@@ -23,7 +23,9 @@ class UserData {
       const users = this.users;
       users.set(userName, new User(userName, password, nickName));
       this.users = users;
+      return true;
     }
+    return false;
   }
 
   login(userName, password) {
@@ -34,9 +36,11 @@ class UserData {
     } else if (user.validatePass(password)) {
       console.log("Login Successful.");
       user.setOnline(true);
+      return user;
     } else {
       console.log("Wrong Password!");
     }
+    return null;
   }
 }
 
