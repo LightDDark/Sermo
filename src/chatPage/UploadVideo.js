@@ -2,7 +2,6 @@ import React, {useRef, useState} from "react";
 
 function UploadVideo(props) {
     const height = props.height;
-    const width = props.width;
     const vidInput = useRef();
     const [vidSource, setVidSource] = useState();
 
@@ -13,7 +12,6 @@ function UploadVideo(props) {
     };
 
     const handleChoose = (event) => {
-        vidInput.current.click();
     };
 
     return (

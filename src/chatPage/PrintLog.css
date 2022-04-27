@@ -1,6 +1,6 @@
 :root {
-    --main-light-color: #f9bbb1;
-    --main-dark-color: #481b0b;
+    --main-light-color:lightgray;
+    --main-dark-color: lightgreen;
     --main-background-color: black;
 }
 
@@ -51,7 +51,7 @@ body{
 }
 .Mes[type=text]{
     text-align: left;
-    color: white;
+    color: black;
     padding-top: 5%;
     right: -5%;
     position: relative;

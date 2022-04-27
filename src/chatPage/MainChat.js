@@ -19,6 +19,14 @@ function MainChat(props) {
     message.current.value = '';
   };
   const [shouldUploadImage, setShouldUploadImage] = useState(false);
+  const itsImageTime = function () {
+    setShouldUploadImage(true);
+  }
+  const [shouldUploadVideo, setShouldUploadVideo] = useState(false);
+  const itsVideoTime = function () {
+    setShouldUploadImage(true);
+  }
+  const [shouldUploadRecord, setShouldUploadRecord] = useState(false);
   const itsTime = function () {
     setShouldUploadImage(true);
   }
@@ -41,6 +49,9 @@ function MainChat(props) {
                 <h6 className="card-subtitle mb-2 text-muted">Online</h6>
               </div>
               <SubChat log={activeContact[1]} userName={user.getName()}/>
+              {
+                  shouldUploadImage && <UploadImage />
+              }
               <div className="align-bottom">
                 <input
                     className="TypeBar"
@@ -55,12 +66,15 @@ function MainChat(props) {
             </div>
             <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
               <div className="btn-group mr-2" role="group" aria-label="Second group">
-                <button type="button" className="btn btn-secondary" onClick={itsTime}>image
+                <button type="button" className="btn btn-secondary" onClick={itsImageTime}>image{
+                    shouldUploadImage && <UploadImage />
+                }
                 </button>
                 <button type="button" className="btn btn-secondary" onClick={RecordAudio}>audio</button>
-                <button type="button" className="btn btn-secondary" onClick={UploadVideo}>video</button>
+                <button type="button" className="btn btn-secondary" onClick={itsVideoTime}>video{
+                    shouldUploadVideo && <UploadVideo height={300} />
+                }</button>
               </div>
-              
             </div>
           </div>
         </div>

@@ -1,0 +1,6 @@
+input[type=file]::-webkit-file-upload-button {
+    visibility: hidden;
+}
+input[type="file"] {
+    width: 90px; /* Keep it under 100px in order to hide the unwanted text. */
+}

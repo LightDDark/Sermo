@@ -120,7 +120,7 @@ input[type=text] {
 }
 .chat{
     display: block;
-    /*background-image:url(background_chat.png);*/
+    background-image:url(background_chat.png);
     background-size: 500px;
     background-position: center;
     background-repeat: repeat;
