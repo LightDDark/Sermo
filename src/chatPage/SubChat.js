@@ -8,9 +8,8 @@ function SubChat(props) {
     log && log.getMessages().length ? (
       <PrintLog log={log} userName={userName} />
     ) : (
-      <h6 className="message">"no new messages."</h6>
+      <h6 className="message">no new messages.</h6>
     );
-
   return <div className="chat">{desc}</div>;
 }
 export default SubChat;
