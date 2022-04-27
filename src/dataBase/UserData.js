@@ -28,10 +28,12 @@ class UserData {
 
   login(userName, password) {
     console.log(userName, password);
-    if (!this.users.has(userName)) {
+    const user = this.users.get(userName);
+    if (user) {
       console.log("Error, userName not found.");
-    } else if (this.users.get(userName).validatePass(password)) {
+    } else if (user.validatePass(password)) {
       console.log("Login Successful.");
+      user.setOnline(true);
     } else {
       console.log("Wrong Password!");
     }

@@ -6,6 +6,7 @@ class User {
     this.userName = userName;
     this.password = password;
     this.nickName = nickName;
+    this.online = false;
     this.contacts = [];
   }
 
@@ -37,6 +38,14 @@ class User {
 
   getContacts() {
     return this.contacts.slice();
+  }
+
+  isOnline() {
+    return this.online;
+  }
+
+  setOnline(status) {
+    this.online = status;
   }
 }
 

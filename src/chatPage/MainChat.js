@@ -33,7 +33,9 @@ function MainChat(props) {
           <div className="card">
             <div className="card-body">
               <h5 className="card-title">{activeContact[0].getNickName()}</h5>
-              <h6 className="card-subtitle mb-2 text-muted">Online</h6>
+              <h6 className="card-subtitle mb-2 text-muted">
+                {activeContact[0].isOnline() ? "Online" : "Offline"}
+              </h6>
             </div>
             <SubChat log={activeContact[1]} userName={user.getName()} />
             <div className="align-bottom">
