@@ -6,6 +6,7 @@ import { Row, Col } from "react-bootstrap";
 
 function SideBar(props) {
   const contacts = props.contacts;
+  const currentUser = props.self;
   const [activeContact, setActiveContact] = props.active;
   const [contactList, setContactList] = useState(contacts);
 
@@ -16,7 +17,7 @@ function SideBar(props) {
   };
   const listContacts = contactList.map((contact, index) => {
     const changeActive = function (contact) {
-      setActiveContact([contact, logs.getLog([contact])]);
+      setActiveContact([contact, logs.getLog(contact,currentUser)]);
     };
     return (
       <li
@@ -28,6 +29,7 @@ function SideBar(props) {
         aria-current={contact === activeContact[0] ? "true" : "false"}
         onClick={() => changeActive(contact)}
         key={index}
+        type="button"
       >
         {contact.getNickName()}
       </li>
