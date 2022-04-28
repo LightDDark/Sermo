@@ -19,14 +19,14 @@ function MainChat(props) {
         <Col sm={2}>
           <SideBar
             contacts={user.getContacts()}
-            user={user}
+            self={user}
             active={[activeContact, setActiveContact]}
           />
         </Col>
         <Col>
           <ContactCard contact={activeContact[0]} />
           <SubChat log={activeContact[1]} userName={user.getName()} />
-          <MessageForm log={activeContact[1]} />
+          <MessageForm id="inside-card" log={activeContact[1]} userName={user.getName()}/>
         </Col>
       </Row>
     </Container>

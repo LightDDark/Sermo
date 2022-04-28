@@ -29,6 +29,7 @@ function SideBar(props) {
         aria-current={contact === activeContact[0] ? "true" : "false"}
         onClick={() => changeActive(contact)}
         key={index}
+        type="button"
       >
         {contact.getNickName()}
       </li>

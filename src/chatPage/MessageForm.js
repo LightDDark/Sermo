@@ -7,30 +7,53 @@ import {
   Stack,
 } from "react-bootstrap";
 import { useRef, useState } from "react";
+import UploadImage from "./UploadImage";
+import UploadVideo from "./UploadVideo";
+import "./image.css"
 
 function MessageForm(props) {
   const log = props.log;
   const userName = props.userName;
 
+  const [shouldUploadImage, setShouldUploadImage] = useState(false);
+  const itsImageTime = function () {
+    setShouldUploadImage(true);
+  }
+  const [shouldUploadVideo, setShouldUploadVideo] = useState(false);
+  const itsVideoTime = function () {
+    setShouldUploadVideo(true);
+  }
+  /* const [shouldUploadRecord, setShouldUploadRecord] = useState(false);
+   const itsRecordTime = function () {
+     setShouldUploadRecord(true);
+   }*/
+  
   const popover = (
     <Popover id="popover-basic">
       <Popover.Body>
         <Stack direction="horizontal" gap={2}>
-          <Button>Audio</Button>
-          <Button>Video</Button>
-          <Button>Image</Button>
+          <label className="imBut" for="actual-btn-im" onClick={itsImageTime}>Image{
+              shouldUploadImage && <UploadImage />
+          }</label>
+          <label className="vidBut" for="actual-btn-vid" onClick={itsVideoTime}>Video{
+              shouldUploadVideo && <UploadVideo height={300}/>
+          }</label>
+{/*          <Button onClick={itsRecordTime}>Audio{
+              shouldUploadRecord && <RecordAudio />
+          }</Button>*/}
         </Stack>
       </Popover.Body>
     </Popover>
   );
 
-  const textM = useRef("");
+  const textM = useRef(null);
   const [type, setType] = useState(null);
 
   const sendTextMessage = function () {
     if (log) {
       const msg = textM.current.value;
       log.newMessage(type, msg, userName);
+      textM.current.value = '';
     }
   };
 
@@ -43,7 +66,7 @@ function MessageForm(props) {
   };
 
   return (
-    <Form noValidate onSubmit={handleSubmit}>
+    <Form autocomplete="off" noValidate onSubmit={handleSubmit}>
       <Stack direction="horizontal">
         <OverlayTrigger trigger="click" placement="top" overlay={popover}>
           <Button variant="secondary">Options</Button>

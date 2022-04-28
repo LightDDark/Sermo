@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import "./image.css"
 
 function UploadImage() {
         const [chosenImage, setChosenImage] = useState();
@@ -16,8 +17,8 @@ function UploadImage() {
         }
         return (
             <div>
-                <input type="file" multiple accept="image/*" onChange={onImageChange}/>
-                <img src={imUrl} alt="image cannot be displayed"/>
+                <input id="actual-btn-im" type="file" multiple accept="image/*" onChange={onImageChange}/>
+                <img src={imUrl} alt=""/>
             </div>
         );
 }

@@ -5,7 +5,6 @@ function PrintLog(props) {
     const classer =
       msg.user === props.userName ? "Container Mine" : "Container Other";
     const timer = msg.date.getHours() + ":" + msg.date.getMinutes();
-    console.log(msg);
     return (
       <div className={classer}>
         <div className="box">
