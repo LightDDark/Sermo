@@ -37,14 +37,16 @@ function SideBar(props) {
   return (
     <div>
       <Row>
-        <Col>
+        <Col sm={7}>
           <SearchBar doSearch={doSearch} />
         </Col>
         <Col>
           <ContactButton setContactList={setContactList} user={props.user} />
         </Col>
       </Row>
-      <ul className="list-group">{listContacts}</ul>
+      <Row>
+        <ul className="list-group">{listContacts}</ul>
+      </Row>
     </div>
   );
 }

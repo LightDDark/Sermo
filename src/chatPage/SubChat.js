@@ -1,18 +1,17 @@
 import "./subChat.css";
 import PrintLog from "./PrintLog";
+import { Row } from "react-bootstrap";
 
 function SubChat(props) {
   const log = props.log;
   const userName = props.userName;
-  const desc =
-    log && log.getMessages().length ? (
-      <PrintLog log={log} userName={userName} />
-    ) : (
-      <h6 className="message">"no new messages."</h6>
-    );
+  const description = function () {
+    if (log && log.getMessages().length) {
+      return <PrintLog log={log} userName={userName} />;
+    }
+    return <h6 className="message">no messages</h6>;
+  };
 
-  return <div className="chat">{desc}</div>;
+  return <Row className="chat">{description()}</Row>;
 }
 export default SubChat;
-
-//{props.logDB.render({userName:t})}

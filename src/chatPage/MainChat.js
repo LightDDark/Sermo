@@ -1,24 +1,41 @@
 import SubChat from "./SubChat";
 import SideBar from "./SideBar";
+import ContactCard from "./ContactCard";
+import MessageForm from "./MessageForm";
 
 import User from "../dataBase/User";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "./subChat.css";
+import { Container, Row, Col } from "react-bootstrap";
 
 function MainChat(props) {
   const user = props.user;
   const nullUser = new User("", "", "");
   const [activeContact, setActiveContact] = useState([nullUser, null]);
-  const message = useRef(null);
-  const sendTextMessage = function (type) {
-    if (activeContact[1]) {
-      const msg = message.current.value;
-      activeContact[1].newMessage(type, msg, user);
-    }
-  };
 
   return (
-    <div className="container">
+    <Container fluid>
+      <Row>
+        <Col sm={2}>
+          <SideBar
+            contacts={user.getContacts()}
+            user={user}
+            active={[activeContact, setActiveContact]}
+          />
+        </Col>
+        <Col>
+          <ContactCard contact={activeContact[0]} />
+          <SubChat log={activeContact[1]} userName={user.getName()} />
+          <MessageForm log={activeContact[1]} />
+        </Col>
+      </Row>
+    </Container>
+  );
+}
+export default MainChat;
+
+/*
+<div className="container">
       <h1 className="h3 mb-3">Messages</h1>
       <div className="row">
         <div className="col-3">
@@ -61,6 +78,4 @@ function MainChat(props) {
         </div>
       </div>
     </div>
-  );
-}
-export default MainChat;
+*/
