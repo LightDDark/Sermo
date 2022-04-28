@@ -5,25 +5,23 @@ function UploadVideo(props) {
     const vidInput = useRef();
     const [vidSource, setVidSource] = useState();
 
-    const handleChange = (event) => {
+    const setVidUrl = (event) => {
         const file = event.target.files[0];
         const url = URL.createObjectURL(file);
         setVidSource(url);
     };
 
-    const handleChoose = (event) => {
-    };
-
     return (
         <div className="VideoInput">
             <input
-                onChange={handleChange}
+                id="actual-btn-vid"
+                onChange={setVidUrl}
                 ref={vidInput}
                 className="VideoInput_input"
                 type="file"
                 accept=".mov,.mp4"
+                hidden
             />
-            {!vidSource && <button onClick={handleChoose}>Choose</button>}
             {vidSource && (
                 <video
                     className="VideoInput_video"
@@ -33,7 +31,6 @@ function UploadVideo(props) {
                     src={vidSource}
                 />
             )}
-            <div className="VideoInput_footer">{vidSource || "please select video to upload"}</div>
         </div>
     );
 }

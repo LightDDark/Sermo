@@ -6,15 +6,18 @@ class User {
     this.userName = userName;
     this.password = password;
     this.nickName = nickName;
+    this.online = false;
     this.contacts = [];
   }
 
   validatePass(password) {
-    return this.state.password === password;
+    return this.password === password;
   }
 
   addContact(user) {
-    if (this.contacts.includes(user)) {
+    if (!user) {
+      console.log("user is indefined");
+    } else if (this.contacts.includes(user)) {
       console.log("Conntact already exists");
     } else {
       const current = this.contacts.slice().concat([user]);
@@ -35,6 +38,14 @@ class User {
 
   getContacts() {
     return this.contacts.slice();
+  }
+
+  isOnline() {
+    return this.online;
+  }
+
+  setOnline(status) {
+    this.online = status;
   }
 }
 

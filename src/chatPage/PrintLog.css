@@ -10,15 +10,16 @@ body{
 
 .box{
     width: 80vh;
-    height: 80vh;
+    height:auto;
     /* border: solid black; */
-    margin: auto;
+    margin-left: 100px;
     position: relative;
     display: block;
+    margin-top: -180px;
 }
 
 .center{
-    padding-top: 50%;
+    height: 300px;
 }
 
 .dialog-1{
@@ -37,7 +38,7 @@ body{
     border-right: 2vh solid transparent;
     border-top: 10vh solid var(--main-dark-color);
     position: absolute;
-    top: 45%;
+    top: 10%;
     left: -10%;
     transform: rotate(60deg);
 }
@@ -76,5 +77,5 @@ body{
     float: left;
     display: block;
     position: absolute;
-    top:-20%
+    top:0
 }

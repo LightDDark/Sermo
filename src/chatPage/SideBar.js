@@ -1,6 +1,8 @@
 import { useState } from "react";
 import SearchBar from "./SearchBar";
 import logs from "../dataBase/LogData";
+import ContactButton from "./ContactButton";
+import { Row, Col } from "react-bootstrap";
 
 function SideBar(props) {
   const contacts = props.contacts;
@@ -27,6 +29,7 @@ function SideBar(props) {
         aria-current={contact === activeContact[0] ? "true" : "false"}
         onClick={() => changeActive(contact)}
         key={index}
+        type="button"
       >
         {contact.getNickName()}
       </li>
@@ -35,8 +38,17 @@ function SideBar(props) {
 
   return (
     <div>
-      <SearchBar doSearch={doSearch} />
-      <ul className="list-group">{listContacts}</ul>
+      <Row>
+        <Col sm={7}>
+          <SearchBar doSearch={doSearch} />
+        </Col>
+        <Col>
+          <ContactButton setContactList={setContactList} user={props.user} />
+        </Col>
+      </Row>
+      <Row>
+        <ul className="list-group">{listContacts}</ul>
+      </Row>
     </div>
   );
 }
