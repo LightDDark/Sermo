@@ -3,7 +3,7 @@ import PrintLog from "./PrintLog";
 import { Row } from "react-bootstrap";
 
 function SubChat(props) {
-  const log = props.log;
+  const log = props.log[1];
   const userName = props.userName;
   const description = function () {
     if (log && log.getMessages().length) {

@@ -9,36 +9,46 @@ import {
 import { useRef, useState } from "react";
 import UploadImage from "./UploadImage";
 import UploadVideo from "./UploadVideo";
-import "./image.css"
+import "./image.css";
 
 function MessageForm(props) {
-  const log = props.log;
+  const [activeContact, setActiveContact] = props.active;
+  const log = activeContact[1];
+  const cont = activeContact[0];
   const userName = props.userName;
 
   const [shouldUploadImage, setShouldUploadImage] = useState(false);
   const itsImageTime = function () {
     setShouldUploadImage(true);
-  }
+  };
   const [shouldUploadVideo, setShouldUploadVideo] = useState(false);
   const itsVideoTime = function () {
     setShouldUploadVideo(true);
-  }
+  };
   /* const [shouldUploadRecord, setShouldUploadRecord] = useState(false);
    const itsRecordTime = function () {
      setShouldUploadRecord(true);
    }*/
-  
+
   const popover = (
     <Popover id="popover-basic">
       <Popover.Body>
         <Stack direction="horizontal" gap={2}>
-          <label className="imBut" for="actual-btn-im" onClick={itsImageTime}>Image{
-              shouldUploadImage && <UploadImage />
-          }</label>
-          <label className="vidBut" for="actual-btn-vid" onClick={itsVideoTime}>Video{
-              shouldUploadVideo && <UploadVideo height={300}/>
-          }</label>
-{/*          <Button onClick={itsRecordTime}>Audio{
+          <label
+            className="imBut"
+            htmlFor="actual-btn-im"
+            onClick={itsImageTime}
+          >
+            Image{shouldUploadImage && <UploadImage />}
+          </label>
+          <label
+            className="vidBut"
+            htmlFor="actual-btn-vid"
+            onClick={itsVideoTime}
+          >
+            Video{shouldUploadVideo && <UploadVideo height={300} />}
+          </label>
+          {/*          <Button onClick={itsRecordTime}>Audio{
               shouldUploadRecord && <RecordAudio />
           }</Button>*/}
         </Stack>
@@ -53,7 +63,8 @@ function MessageForm(props) {
     if (log) {
       const msg = textM.current.value;
       log.newMessage(type, msg, userName);
-      textM.current.value = '';
+      setActiveContact([cont, log]);
+      textM.current.value = "";
     }
   };
 
@@ -66,7 +77,7 @@ function MessageForm(props) {
   };
 
   return (
-    <Form autocomplete="off" noValidate onSubmit={handleSubmit}>
+    <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
       <Stack direction="horizontal">
         <OverlayTrigger trigger="click" placement="top" overlay={popover}>
           <Button variant="secondary">Options</Button>

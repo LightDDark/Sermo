@@ -5,7 +5,20 @@ class Log {
   // gets the users in chat and if private chat or group
   constructor(userNames, isPrivate) {
     this.userNames = userNames;
-    this.messages = [];
+    this.messages = [
+      {
+        type: "text",
+        content: <HandleContent type={"text"} content={"a"} />,
+        user: "a",
+        date: new Date(),
+      },
+      {
+        type: "text",
+        content: <HandleContent type={"text"} content={"a"} />,
+        user: "a",
+        date: new Date(),
+      },
+    ];
     this.isPrivate = isPrivate;
   }
 

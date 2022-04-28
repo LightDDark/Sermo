@@ -17,7 +17,7 @@ function SideBar(props) {
   };
   const listContacts = contactList.map((contact, index) => {
     const changeActive = function (contact) {
-      setActiveContact([contact, logs.getLog(contact,currentUser)]);
+      setActiveContact([contact, logs.getLog(contact, currentUser)]);
     };
     return (
       <li
@@ -43,7 +43,7 @@ function SideBar(props) {
           <SearchBar doSearch={doSearch} />
         </Col>
         <Col>
-          <ContactButton setContactList={setContactList} user={props.user} />
+          <ContactButton setContactList={setContactList} user={currentUser} />
         </Col>
       </Row>
       <Row>

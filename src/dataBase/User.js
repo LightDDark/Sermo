@@ -23,7 +23,6 @@ class User {
       const current = this.contacts.slice().concat([user]);
       this.contacts = current;
       logs.addLog(new Log([this.getName(), user.getName()], true));
-      console.log(user.getName() + " added succefuly.");
     }
     return this;
   }
