@@ -1,6 +1,8 @@
 import React, {useRef, useState} from "react";
 
 function UploadVideo(props) {
+    const log = props.log;
+    const userName = props.userName;
     const height = props.height;
     const vidInput = useRef();
     const [vidSource, setVidSource] = useState();
@@ -10,6 +12,9 @@ function UploadVideo(props) {
         const url = URL.createObjectURL(file);
         setVidSource(url);
     };
+    function newVideoMessage(){
+        log.newMessage("video", vidSource, userName);
+    }
 
     return (
         <div className="VideoInput">
@@ -22,15 +27,7 @@ function UploadVideo(props) {
                 accept=".mov,.mp4"
                 hidden
             />
-            {vidSource && (
-                <video
-                    className="VideoInput_video"
-                    width="100%"
-                    height={height}
-                    controls
-                    src={vidSource}
-                />
-            )}
+            {vidSource && newVideoMessage()}
         </div>
     );
 }
