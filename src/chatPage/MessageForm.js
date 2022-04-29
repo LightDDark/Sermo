@@ -59,7 +59,7 @@ function MessageForm(props) {
                 onClick={itsVideoTime}
                 onChange={() => setType("video")}
             >
-              Video{shouldUploadVideo && <UploadVideo height={300} />}
+              Video{shouldUploadVideo && <UploadVideo log={log} userName={userName} height={300} />}
             </label>
             {/*          <Button onClick={itsRecordTime}>Audio{
               shouldUploadRecord && <RecordAudio />

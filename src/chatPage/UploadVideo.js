@@ -13,9 +13,7 @@ function UploadVideo(props) {
         setVidSource(url);
     };
     function newVideoMessage(){
-        if(vidSource) {
             log.newMessage("video", vidSource, userName);
-        }
     }
 
     return (
