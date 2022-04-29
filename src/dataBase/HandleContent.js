@@ -1,3 +1,5 @@
+import React from "react";
+
 function handleText({ content }) {
   return <p>{content}</p>;
 }
@@ -11,7 +13,7 @@ function handleAudio({ content }) {
 }
 
 function handleImage({ content }) {
-  return <img src={URL.createObjectURL(content.target.files[0])} alt=""></img>;
+  return <img src={content} alt=""/>;
 }
 
 const operMap = new Map()

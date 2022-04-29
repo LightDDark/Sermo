@@ -12,9 +12,8 @@ function PrintLog(props) {
           <div className="center" key={index + length + 1}>
             <div className="dialog-1" key={index + length + 2}>
               <div className="left-point" key={index + length + 3} />
-              <div className="Mes" type="text" key={index + length + 4}>
-                {msg.content.props.content}
-              </div>
+              <img src={msg.content.props.content} className="Mes" key={index + length + 4} alt="">
+              </img>
               <div className="timer" key={index + length + 5}>
                 <span className="time-right" key={index + length + 6}>
                   {timer}

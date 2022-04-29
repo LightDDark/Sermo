@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from "react";
 import "./image.css"
 
-function UploadImage() {
+function UploadImage(props) {
+    const log = props.log;
+    const userName = props.userName;
         const [chosenImage, setChosenImage] = useState();
         const [imUrl, setImUrl] = useState(null);
         
@@ -15,10 +17,13 @@ function UploadImage() {
         function onImageChange(e){
             setChosenImage(...e.target.files);
         }
+        function newImageMessage(){
+            log.newMessage("image", imUrl, userName);
+        }
         return (
             <div>
                 <input id="actual-btn-im" type="file" multiple accept="image/*" onChange={onImageChange}/>
-                <img src={imUrl} alt=""/>
+                {imUrl && newImageMessage()}
             </div>
         );
 }
