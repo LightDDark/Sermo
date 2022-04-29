@@ -37,36 +37,50 @@ function MessageForm(props) {
    const itsRecordTime = function () {
      setShouldUploadRecord(true);
    }*/
-  
+
   const popover = (
-      <Popover id="popover-basic">
-        <Popover.Body>
-          <Stack direction="horizontal" gap={2}>
-            <label
-                ref={imageM}
-                className="imBut"
-                htmlFor="actual-btn-im"
-                onClick={itsImageTime}
-                onChange={() => setType("image")}
-            >
-              Image{shouldUploadImage && <UploadImage log={log} userName={userName} />}
-              {noImageTime}
-            </label>
-            <label
-                ref={videoM}
-                className="vidBut"
-                htmlFor="actual-btn-vid"
-                onClick={itsVideoTime}
-                onChange={() => setType("video")}
-            >
-              Video{shouldUploadVideo && <UploadVideo height={300} />}
-            </label>
-            {/*          <Button onClick={itsRecordTime}>Audio{
+    <Popover id="popover-basic">
+      <Popover.Body>
+        <Stack direction="horizontal" gap={2}>
+          <label
+            ref={imageM}
+            className="imBut"
+            htmlFor="actual-btn-im"
+            onClick={itsImageTime}
+            onChange={() => setType("image")}
+          >
+            Image
+            {shouldUploadImage && (
+              <UploadImage
+                log={log}
+                active={[activeContact, setActiveContact]}
+                userName={userName}
+              />
+            )}
+            {noImageTime}
+          </label>
+          <label
+            ref={videoM}
+            className="vidBut"
+            htmlFor="actual-btn-vid"
+            onClick={itsVideoTime}
+            onChange={() => setType("video")}
+          >
+            Video
+            {shouldUploadVideo && (
+              <UploadVideo
+                height={300}
+                active={[activeContact, setActiveContact]}
+                log={log}
+              />
+            )}
+          </label>
+          {/*          <Button onClick={itsRecordTime}>Audio{
               shouldUploadRecord && <RecordAudio />
           }</Button>*/}
-          </Stack>
-        </Popover.Body>
-      </Popover>
+        </Stack>
+      </Popover.Body>
+    </Popover>
   );
 
   const textM = useRef(null);
@@ -89,30 +103,30 @@ function MessageForm(props) {
   };
 
   return (
-      <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
-        <Stack direction="horizontal">
-          <OverlayTrigger trigger="click" placement="top" overlay={popover}>
-            <Button variant="secondary">Options</Button>
-          </OverlayTrigger>
+    <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
+      <Stack direction="horizontal">
+        <OverlayTrigger trigger="click" placement="top" overlay={popover}>
+          <Button variant="secondary">Options</Button>
+        </OverlayTrigger>
 
-          <Form.Group
-              className="col-xxl-10"
-              as={Col}
-              controlId="validationCustom01"
-          >
-            <Form.Control
-                ref={textM}
-                type="text"
-                placeholder="Message"
-                onChange={() => setType("text")}
-            />
-          </Form.Group>
+        <Form.Group
+          className="col-xxl-10"
+          as={Col}
+          controlId="validationCustom01"
+        >
+          <Form.Control
+            ref={textM}
+            type="text"
+            placeholder="Message"
+            onChange={() => setType("text")}
+          />
+        </Form.Group>
 
-          <Button type="submit" variant="success">
-            Send
-          </Button>
-        </Stack>
-      </Form>
+        <Button type="submit" variant="success">
+          Send
+        </Button>
+      </Stack>
+    </Form>
   );
 }
 
