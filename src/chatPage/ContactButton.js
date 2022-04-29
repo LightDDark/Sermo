@@ -7,6 +7,7 @@ function ContactButton(props) {
   const [validated, setValidated] = useState(true);
   const contact = useRef(null);
   const setContactList = props.setContactList;
+  const user = props.user;
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -15,8 +16,8 @@ function ContactButton(props) {
     const contactToAdd = users.getUser(contact.current.value);
     if (contactToAdd) {
       setValidated(true);
-      props.user.addContact(contactToAdd);
-      setContactList(props.user.getContacts());
+      user.addContact(contactToAdd);
+      setContactList(user.getContacts());
       setShow(false);
     } else {
       setValidated(false);
