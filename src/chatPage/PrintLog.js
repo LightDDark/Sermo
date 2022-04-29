@@ -14,15 +14,15 @@ function PrintLog(props) {
             <div className="dialog-1" key={index + length + 2}>
               <div className="left-point" key={index + length + 3} />
               <div> {msg.type === 'image' &&
-              <img src={msg.content.props.content} className="Mes" key={index + length + 4} alt="">
+              <img src={msg.content.props.content} className="Mes-img" key={index + length + 4} alt="">
               </img>}
                 {
                   msg.type === 'text' &&
-                    <div className="Mes" key={index + length + 4}>{msg.content.props.content}</div>
+                    <div className="Mes-text" key={index + length + 4}>{msg.content.props.content}</div>
                 }
                 {msg.type === 'video' && <video
                     key={index + length + 4}
-                    className="VideoInput_video"
+                    className="Mes-vid"
                     width="100%"
                     height={300}
                     controls
