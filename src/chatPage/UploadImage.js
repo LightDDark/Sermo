@@ -4,7 +4,7 @@ import "./image.css"
 function UploadImage(props) {
     const log = props.log;
     const userName = props.userName;
-        const [chosenImage, setChosenImage] = useState();
+        const [chosenImage, setChosenImage] = useState(null);
         const [imUrl, setImUrl] = useState(null);
         
         useEffect(()=>{
@@ -18,12 +18,18 @@ function UploadImage(props) {
             setChosenImage(...e.target.files);
         }
         function newImageMessage(){
-            log.newMessage("image", imUrl, userName);
+            if(imUrl) {
+                log.newMessage("image", imUrl, userName);
+                setImUrl(null);
+                setChosenImage(null);
+            }
         }
         return (
             <div>
                 <input id="actual-btn-im" type="file" multiple accept="image/*" onChange={onImageChange}/>
-                {imUrl && newImageMessage()}
+                {imUrl &&
+                    <button className="confirm-send-im" onClick={newImageMessage}>send image</button>
+                }
             </div>
         );
 }

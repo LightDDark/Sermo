@@ -3,6 +3,14 @@
     --main-dark-color: lightgreen;
     --main-background-color: black;
 }
+.Mine{
+    height: fit-content;
+    margin:2vh;
+}
+.Other{
+    height: fit-content;
+    margin:2vh;
+}
 
 body{
     background-color: var(--main-background-color);
@@ -10,26 +18,25 @@ body{
 
 .box{
     width: 80vh;
-    height:auto;
+    height:fit-content;
     /* border: solid black; */
     margin-left: 100px;
     position: relative;
     display: block;
-    margin-top: -180px;
 }
 
 .center{
-    height: 300px;
+    height: fit-content;
 }
 
 .dialog-1{
-    height: auto;
-    width: auto;
+width: fit-content;
+    max-width: 50%;
     background-color: var(--main-dark-color);
-    position: absolute;
     border-radius: 10%;
     display: block;
-    padding:10px
+    padding:5px;
+    min-width: 7vw;
 }
 .Mes-img{
     position: inherit;
@@ -59,13 +66,11 @@ body{
 .Mes[type=text]{
     text-align: left;
     color: black;
-    padding-top: 5%;
-    right: -5%;
-    position: relative;
+    position: center;
     overflow-wrap: break-word;
     word-wrap: break-word;
-    display: inline-block;
-    font-size: 18px;
+    display: block;
+    font-size: 25px;
 }
 
 .right-point{
@@ -80,8 +85,8 @@ body{
     transform: rotate(-60deg);
 }
 .timer{
-    float: left;
+    color: dimgray;
+    float: right;
     display: block;
-    position: absolute;
-    top:-5%;
+    position: relative;
 }

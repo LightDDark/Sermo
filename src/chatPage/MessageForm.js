@@ -26,6 +26,9 @@ function MessageForm(props) {
   const itsImageTime = function () {
     setShouldUploadImage(true);
   };
+  const noImageTime = function () {
+    setShouldUploadImage(false);
+  };
   const [shouldUploadVideo, setShouldUploadVideo] = useState(false);
   const itsVideoTime = function () {
     setShouldUploadVideo(true);
@@ -47,6 +50,7 @@ function MessageForm(props) {
                 onChange={() => setType("image")}
             >
               Image{shouldUploadImage && <UploadImage log={log} userName={userName} />}
+              {noImageTime}
             </label>
             <label
                 ref={videoM}

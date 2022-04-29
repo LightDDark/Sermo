@@ -6,13 +6,14 @@ function PrintLog(props) {
   const messages = props.log.getMessages().map((msg, index) => {
     const classer =
       msg.user === props.userName ? "Container Mine" : "Container Other";
-    const timer = msg.date.getHours() + ":" + msg.date.getMinutes();
+    const mins = msg.date.getMinutes()>10 ? msg.date.getMinutes() : '0' + msg.date.getMinutes();
+    const timer = msg.date.getHours() + ":" + mins;
     return (
       <div className={classer} key={index}>
         <div className="box" key={index + length}>
           <div className="center" key={index + length + 1}>
             <div className="dialog-1" key={index + length + 2}>
-              <div className="left-point" key={index + length + 3} />
+              
               <div> {msg.type === 'image' &&
               <img src={msg.content.props.content} className="Mes-img" key={index + length + 4} alt="">
               </img>}
@@ -34,6 +35,7 @@ function PrintLog(props) {
                   {timer}
                 </span>
               </div>
+              <div className="left-point" key={index + length + 3} />
             </div>
           </div>
         </div>

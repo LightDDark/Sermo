@@ -13,7 +13,9 @@ function UploadVideo(props) {
         setVidSource(url);
     };
     function newVideoMessage(){
-        log.newMessage("video", vidSource, userName);
+        if(vidSource) {
+            log.newMessage("video", vidSource, userName);
+        }
     }
 
     return (
@@ -26,8 +28,9 @@ function UploadVideo(props) {
                 type="file"
                 accept=".mov,.mp4"
                 hidden
-            />
-            {vidSource && newVideoMessage()}
+            />{vidSource &&
+            <button onClick={newVideoMessage}>send video</button>
+        }
         </div>
     );
 }
