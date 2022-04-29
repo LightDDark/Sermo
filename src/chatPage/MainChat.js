@@ -2,6 +2,7 @@ import SubChat from "./SubChat";
 import SideBar from "./SideBar";
 import ContactCard from "./ContactCard";
 import MessageForm from "./MessageForm";
+import Chat from "./Chat";
 
 import User from "../dataBase/User";
 import { useState } from "react";
@@ -10,8 +11,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 function MainChat(props) {
   const user = props.user;
-  const nullUser = new User("", "", "");
-  const [activeContact, setActiveContact] = useState([nullUser, null]);
+  const [activeContact, setActiveContact] = useState([null, null]);
 
   return (
     <Container fluid>
@@ -23,15 +23,11 @@ function MainChat(props) {
             active={[activeContact, setActiveContact]}
           />
         </Col>
-        <Col>
-          <ContactCard contact={activeContact[0]} />
-          <SubChat log={activeContact} userName={user.getName()} />
-          <MessageForm
-            id="inside-card"
-            active={[activeContact, setActiveContact]}
-            userName={user.getName()}
-          />
-        </Col>
+        {activeContact[0] ? (
+          <Chat active={[activeContact, setActiveContact]} user={user} />
+        ) : (
+          <Col className="p-3 mb-2 bg-secondary text-white"></Col>
+        )}
       </Row>
     </Container>
   );
