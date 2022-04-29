@@ -10,6 +10,7 @@ import { useRef, useState } from "react";
 import UploadImage from "./UploadImage";
 import UploadVideo from "./UploadVideo";
 import "./image.css";
+import RecordAudio from "./RecordAudio";
 
 function MessageForm(props) {
   const [activeContact, setActiveContact] = props.active;
@@ -26,23 +27,20 @@ function MessageForm(props) {
   const itsImageTime = function () {
     setShouldUploadImage(true);
   };
-  const noImageTime = function () {
-    setShouldUploadImage(false);
-  };
   const [shouldUploadVideo, setShouldUploadVideo] = useState(false);
   const itsVideoTime = function () {
     setShouldUploadVideo(true);
   };
-  /* const [shouldUploadRecord, setShouldUploadRecord] = useState(false);
+  const [shouldUploadRecord, setShouldUploadRecord] = useState(false);
    const itsRecordTime = function () {
      setShouldUploadRecord(true);
-   }*/
+   }
 
   const popover = (
     <Popover id="popover-basic">
       <Popover.Body>
         <Stack direction="horizontal" gap={2}>
-          <label
+          <label 
             ref={imageM}
             className="imBut"
             htmlFor="actual-btn-im"
@@ -57,7 +55,6 @@ function MessageForm(props) {
                 userName={userName}
               />
             )}
-            {noImageTime}
           </label>
           <label
             ref={videoM}
@@ -72,12 +69,26 @@ function MessageForm(props) {
                 height={300}
                 active={[activeContact, setActiveContact]}
                 log={log}
+                userName={userName}
               />
             )}
           </label>
-          {/*          <Button onClick={itsRecordTime}>Audio{
-              shouldUploadRecord && <RecordAudio />
-          }</Button>*/}
+          <label
+              ref={audioM}
+              className="vidBut"
+              htmlFor="actual-btn-vid"
+              onClick={itsRecordTime}
+              onChange={() => setType("audio")}
+          >
+            Audio
+            {shouldUploadRecord && (
+                <RecordAudio
+                    active={[activeContact, setActiveContact]}
+                    log={log}
+                    userName={userName}
+                />
+            )}
+          </label>
         </Stack>
       </Popover.Body>
     </Popover>
@@ -115,6 +126,7 @@ function MessageForm(props) {
           controlId="validationCustom01"
         >
           <Form.Control
+              className="MsgInput"
             ref={textM}
             type="text"
             placeholder="Message"

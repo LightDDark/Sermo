@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import "./subChat.css"
 function SearchBar({ doSearch }) {
     const searchInput = useRef(null);
     const search = function () {
@@ -11,7 +12,7 @@ function SearchBar({ doSearch }) {
                 ref={searchInput}
                 onKeyUp={search}
                 type="text"
-                className="control"
+                className="Search-barr"
                 placeholder="search"
             />
         </div>

@@ -29,6 +29,12 @@ function PrintLog(props) {
                     controls
                     src={msg.content.props.content}
                 />}
+                {msg.type === 'audio' && <audio
+                    key={index + length + 4}
+                    className="Mes-aud"
+                    controls
+                    src={msg.content.props.content}
+                />}
               </div>
               <div className="timer" key={index + length + 5}>
                 <span className="time-right" key={index + length + 6}>

@@ -9,7 +9,7 @@ function UploadImage(props) {
   const [imUrl, setImUrl] = useState(null);
 
   useEffect(() => {
-    if (!chosenImage) {
+    if (!chosenImage || imUrl) {
       return;
     }
     const url = URL.createObjectURL(chosenImage);
@@ -37,9 +37,7 @@ function UploadImage(props) {
         onChange={onImageChange}
       />
       {imUrl && (
-        <button className="confirm-send-im" onClick={newImageMessage}>
-          send image
-        </button>
+          <button className="Fl" onClick={newImageMessage}>click here to upload</button>
       )}
     </div>
   );

@@ -3,6 +3,7 @@ import React, {useRef, useState} from "react";
 function UploadVideo(props) {
     const log = props.log;
     const userName = props.userName;
+    const [activeContact, setActiveContact] = props.active;
     const height = props.height;
     const vidInput = useRef();
     const [vidSource, setVidSource] = useState();
@@ -14,6 +15,7 @@ function UploadVideo(props) {
     };
     function newVideoMessage(){
             log.newMessage("video", vidSource, userName);
+            setActiveContact([activeContact[0], log]);
     }
 
     return (

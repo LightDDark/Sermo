@@ -1,48 +1,73 @@
-import { useEffect, useState } from "react";
+import {useState} from "react";
 
-const useRecorder = () => {
-    const [audioURL, setAudioURL] = useState("");
-    const [isRecording, setIsRecording] = useState(false);
-    const [recorder, setRecorder] = useState(null);
+function RecordAudio(props) {
+    const [activeContact, setActiveContact] = props.active;
+    const log = props.log;
+    const userName = props.userName;
+    const [audioFile,setAudioFile] = useState(null);
+    let audioIN = {audio: true};
+    navigator.mediaDevices.getUserMedia(audioIN)
 
-    useEffect(() => {
-        // Lazily obtain recorder first time we're recording.
-        if (recorder === null) {
-            if (isRecording) {
-                requestRecorder().then(setRecorder, console.error);
+        .then(function (mediaStreamObj) {
+            
+            let audio = document.querySelector('audio');
+            let start = document.getElementById('btnStart');
+            let stop = document.getElementById('btnStop');
+            let playAudio = document.getElementById('audioPlay');
+            audio.srcObject =mediaStreamObj;
+
+            audio.onloadedmetadata = function (ev) {
+                audio.play();
+            };
+            
+            let mediaRecorder = new MediaRecorder(mediaStreamObj);
+
+            start.addEventListener('click', function (ev) {
+                mediaRecorder.start();
+            })
+
+            stop.addEventListener('click', function (ev) {
+                mediaRecorder.stop();
+            });
+            
+            mediaRecorder.ondataavailable = function (ev) {
+                dataArray.push(ev.data);
             }
-            return;
-        }
+            
+            let dataArray = [];
+            
+            mediaRecorder.onstop = function (ev) {
+                
+                let audioData = new Blob(dataArray,
+                    {'type': 'audio/mp3;'});
+                
+                dataArray = [];
+                
+                let audioSrc = window.URL
+                    .createObjectURL(audioData);
 
-        // Manage recorder state.
-        if (isRecording) {
-            recorder.start();
-        } else {
-            recorder.stop();
-        }
-
-        // Obtain the audio when ready.
-        const handleData = e => {
-            setAudioURL(URL.createObjectURL(e.data));
-        };
-
-        recorder.addEventListener("dataavailable", handleData);
-        return () => recorder.removeEventListener("dataavailable", handleData);
-    }, [recorder, isRecording]);
-
-    const startRecording = () => {
-        setIsRecording(true);
-    };
-
-    const stopRecording = () => {
-        setIsRecording(false);
-    };
-
-    return [audioURL, isRecording, startRecording, stopRecording];
-};
-
-async function requestRecorder() {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    return new MediaRecorder(stream);
+                playAudio.src = audioSrc;
+                setAudioFile(playAudio);
+            }
+        })
+        // If any error occurs then handles the error
+        .catch(function (err) {
+            console.log(err.name, err.message);
+        });
+        function newAudioMessage() {
+            log.newMessage("audio", audioFile, userName);
+            setActiveContact([activeContact[0], log]);
+    }
+    return (
+        <div>
+            <p>
+                <button id="btnStart">START RECORDING</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button id="btnStop" >STOP RECORDING</button>
+            </p>
+            <audio id="audioPlay" controls></audio>
+            <button onClick={newAudioMessage}>click here to upload</button>
+        </div>
+    );
 }
-export default useRecorder;
+export default RecordAudio;

@@ -10,6 +10,10 @@ input[type="file"] {
     top: 0;
     overflow-block: hidden;
 }
+.Hid{
+    visibility: hidden;
+    -webkit-appearance:none;
+}
 .imBut {
     height: 38px;
     background-color: midnightblue;
@@ -38,4 +42,12 @@ input[type="file"] {
     cursor: pointer;
     margin-top: 1rem;
     height: 38px;
+}
+.Fl{
+    position:absolute;
+    top: 5px;
+    left:2px;
+    right:5px;
+    bottom:52px;
+    background-color: plum;
 }
