@@ -5,6 +5,7 @@ import {
   Popover,
   OverlayTrigger,
   Stack,
+  Modal,
 } from "react-bootstrap";
 import { useRef, useState } from "react";
 import UploadImage from "./UploadImage";
@@ -17,6 +18,20 @@ function MessageForm(props) {
   const cont = activeContact[0];
   const userName = props.userName;
   const [type, setType] = useState(null);
+  const [imUrl, setImUrl] = useState(null);
+  const [show, setShow] = useState(false);
+  const [chosenImage, setChosenImage] = useState(null);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const newImageMessage = function () {
+    if (imUrl) {
+      log.newMessage("image", imUrl, userName);
+      setImUrl(null);
+      setChosenImage(null);
+      setActiveContact([activeContact[0], log]);
+    }
+  };
 
   const imageM = useRef();
   const videoM = useRef();
@@ -42,23 +57,51 @@ function MessageForm(props) {
     <Popover id="popover-basic">
       <Popover.Body>
         <Stack direction="horizontal" gap={2}>
-          <label
-            ref={imageM}
-            className="imBut"
-            htmlFor="actual-btn-im"
-            onClick={itsImageTime}
-            onChange={() => setType("image")}
-          >
+          <Button variant="primary" onClick={handleShow}>
             Image
-            {shouldUploadImage && (
-              <UploadImage
-                log={log}
-                active={[activeContact, setActiveContact]}
-                userName={userName}
-              />
-            )}
-            {noImageTime}
-          </label>
+          </Button>
+
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Modal heading</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <label
+                ref={imageM}
+                className="imBut"
+                htmlFor="actual-btn-im"
+                onClick={itsImageTime}
+                onChange={() => setType("image")}
+              >
+                Upload Image
+                {shouldUploadImage && (
+                  <UploadImage
+                    log={log}
+                    active={[activeContact, setActiveContact]}
+                    userName={userName}
+                    imUrl={[imUrl, setImUrl]}
+                    chosenImage={[chosenImage, setChosenImage]}
+                  />
+                )}
+                {noImageTime}
+              </label>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+
+              {imUrl && (
+                <Button
+                  variant="primary"
+                  className="confirm-send-im"
+                  onClick={newImageMessage}
+                >
+                  send image
+                </Button>
+              )}
+            </Modal.Footer>
+          </Modal>
           <label
             ref={videoM}
             className="vidBut"
@@ -131,3 +174,16 @@ function MessageForm(props) {
 }
 
 export default MessageForm;
+/*
+function Example() {
+  
+
+  return (
+    <>
+      
+    </>
+  );
+}
+
+render(<Example />);
+*/

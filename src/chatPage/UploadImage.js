@@ -5,8 +5,8 @@ function UploadImage(props) {
   const [activeContact, setActiveContact] = props.active;
   const log = props.log;
   const userName = props.userName;
-  const [chosenImage, setChosenImage] = useState(null);
-  const [imUrl, setImUrl] = useState(null);
+  const [chosenImage, setChosenImage] = props.chosenImage;
+  const [imUrl, setImUrl] = props.imUrl;
 
   useEffect(() => {
     if (!chosenImage) {
@@ -36,11 +36,6 @@ function UploadImage(props) {
         accept="image/*"
         onChange={onImageChange}
       />
-      {imUrl && (
-        <button className="confirm-send-im" onClick={newImageMessage}>
-          send image
-        </button>
-      )}
     </div>
   );
 }
