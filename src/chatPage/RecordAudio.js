@@ -1,4 +1,5 @@
 import {useState} from "react";
+import "./image.css"
 
 function RecordAudio(props) {
     const [activeContact, setActiveContact] = props.active;
@@ -66,7 +67,7 @@ function RecordAudio(props) {
                 <button id="btnStop" >STOP RECORDING</button>
             </p>
             <audio id="audioPlay" controls></audio>
-            <button onClick={newAudioMessage}>click here to upload</button>
+            <button className="Fl" onClick={newAudioMessage}>send audio</button>
         </div>
     );
 }

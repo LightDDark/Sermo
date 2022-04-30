@@ -1,4 +1,5 @@
 import React, {useRef, useState} from "react";
+import "./image.css"
 
 function UploadVideo(props) {
     const log = props.log;
@@ -14,8 +15,8 @@ function UploadVideo(props) {
         setVidSource(url);
     };
     function newVideoMessage(){
-            log.newMessage("video", vidSource, userName);
-            setActiveContact([activeContact[0], log]);
+        log.newMessage("video", vidSource, userName);
+        setActiveContact([activeContact[0], log]);
     }
 
     return (
@@ -29,7 +30,7 @@ function UploadVideo(props) {
                 accept=".mov,.mp4"
                 hidden
             />{vidSource &&
-            <button onClick={newVideoMessage}>send video</button>
+            <button className="Fl" onClick={newVideoMessage}>send video</button>
         }
         </div>
     );

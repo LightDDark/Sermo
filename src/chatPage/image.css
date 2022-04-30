@@ -44,10 +44,5 @@ input[type="file"] {
     height: 38px;
 }
 .Fl{
-    position:absolute;
-    top: 5px;
-    left:2px;
-    right:5px;
-    bottom:52px;
     background-color: plum;
 }
