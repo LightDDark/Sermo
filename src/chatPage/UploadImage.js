@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./image.css";
 
 function UploadImage(props) {
-  const [activeContact, setActiveContact] = props.active;
-  const log = props.log;
-  const userName = props.userName;
   const [chosenImage, setChosenImage] = props.chosenImage;
-  const [imUrl, setImUrl] = props.imUrl;
+  const setImUrl = props.setImUrl;
 
   useEffect(() => {
     if (!chosenImage) {
@@ -19,14 +16,7 @@ function UploadImage(props) {
   function onImageChange(e) {
     setChosenImage(...e.target.files);
   }
-  function newImageMessage() {
-    if (imUrl) {
-      log.newMessage("image", imUrl, userName);
-      setImUrl(null);
-      setChosenImage(null);
-      setActiveContact([activeContact[0], log]);
-    }
-  }
+
   return (
     <div>
       <input
