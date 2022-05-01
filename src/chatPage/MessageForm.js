@@ -79,7 +79,7 @@ function MessageForm(props) {
             </label>
             <label
                 ref={audioM}
-                className="vidBut"
+                className="audBut"
                 htmlFor="actual-btn-vid"
                 onClick={itsRecordTime}
                 onChange={() => setType("audio")}

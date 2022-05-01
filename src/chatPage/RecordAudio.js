@@ -5,7 +5,8 @@ function RecordAudio(props) {
     const [activeContact, setActiveContact] = props.active;
     const log = props.log;
     const userName = props.userName;
-    const [audioFile,setAudioFile] = useState(null);
+    const [audioFileSrc,setAudioFileSrc] = useState(null);
+    const [recProgress,setRecProgress] = useState(false);
     let audioIN = {audio: true};
     navigator.mediaDevices.getUserMedia(audioIN)
 
@@ -15,20 +16,25 @@ function RecordAudio(props) {
             let start = document.getElementById('btnStart');
             let stop = document.getElementById('btnStop');
             let playAudio = document.getElementById('audioPlay');
-            audio.srcObject =mediaStreamObj;
+            audio.srcObject = mediaStreamObj;
 
-            audio.onloadedmetadata = function (ev) {
+/*            audio.onloadedmetadata = function (ev) {
                 audio.play();
-            };
+                ev.preventDefault()
+            };*/
             
             let mediaRecorder = new MediaRecorder(mediaStreamObj);
 
             start.addEventListener('click', function (ev) {
                 mediaRecorder.start();
+                setRecProgress(true);
+                ev.preventDefault()
             })
 
             stop.addEventListener('click', function (ev) {
                 mediaRecorder.stop();
+                setRecProgress(false);
+                ev.preventDefault()
             });
             
             mediaRecorder.ondataavailable = function (ev) {
@@ -47,8 +53,8 @@ function RecordAudio(props) {
                 let audioSrc = window.URL
                     .createObjectURL(audioData);
 
-                playAudio.src = audioSrc;
-                setAudioFile(playAudio);
+                //playAudio.src = audioSrc;
+                setAudioFileSrc(audioSrc);
             }
         })
         // If any error occurs then handles the error
@@ -56,17 +62,17 @@ function RecordAudio(props) {
             console.log(err.name, err.message);
         });
         function newAudioMessage() {
-            log.newMessage("audio", audioFile, userName);
+            log.newMessage("audio", audioFileSrc, userName);
             setActiveContact([activeContact[0], log]);
     }
     return (
         <div>
             <p>
                 <button id="btnStart">START RECORDING</button>
+                {recProgress && <label className="Prog">recording in progress...</label>}
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <button id="btnStop" >STOP RECORDING</button>
             </p>
-            <audio id="audioPlay" controls></audio>
             <button className="Fl" onClick={newAudioMessage}>send audio</button>
         </div>
     );
