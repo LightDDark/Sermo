@@ -24,7 +24,7 @@ function Login(props) {
         <label htmlFor="formGroupExampleInput" className="form-label">
           Username
           <input
-            type="text"
+            type="username"
             ref={user}
             className="form-control"
             id="formGroupExampleInput"

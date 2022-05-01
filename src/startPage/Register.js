@@ -88,7 +88,7 @@ function Register() {
           <Form.Label>Nickame</Form.Label>
           <Form.Control
             ref={nick}
-            type="text"
+            type="username"
             placeholder="Enter Nickname"
             required={true}
           />
