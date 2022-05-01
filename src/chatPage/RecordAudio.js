@@ -12,16 +12,8 @@ function RecordAudio(props) {
 
         .then(function (mediaStreamObj) {
             
-            let audio = document.querySelector('audio');
             let start = document.getElementById('btnStart');
             let stop = document.getElementById('btnStop');
-            let playAudio = document.getElementById('audioPlay');
-            audio.srcObject = mediaStreamObj;
-
-/*            audio.onloadedmetadata = function (ev) {
-                audio.play();
-                ev.preventDefault()
-            };*/
             
             let mediaRecorder = new MediaRecorder(mediaStreamObj);
 
@@ -32,9 +24,11 @@ function RecordAudio(props) {
             })
 
             stop.addEventListener('click', function (ev) {
-                mediaRecorder.stop();
-                setRecProgress(false);
-                ev.preventDefault()
+                if(mediaRecorder.state !== 'inactive') {
+                    mediaRecorder.stop();
+                    setRecProgress(false);
+                    ev.preventDefault()
+                }
             });
             
             mediaRecorder.ondataavailable = function (ev) {
