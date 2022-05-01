@@ -30,9 +30,8 @@ body{
 }
 
 .dialog-1{
-width: fit-content;
+    width: fit-content;
     max-width: 50%;
-    background-color: var(--main-dark-color);
     border-radius: 10%;
     display: block;
     padding:5px;
@@ -44,8 +43,7 @@ width: fit-content;
     height: 300px;
     object-fit: contain;
 }
-
-.left-point{
+/*.left-point{
     width: 0;
     height: 0;
     border-left: 1vh solid transparent;
@@ -54,14 +52,17 @@ width: fit-content;
     position: relative;
     left: -10%;
     transform: rotate(60deg);
-}
-
-.dialog-2{
-    height: 20%;
-    width: 40%;
-    background-color: var(--main-light-color);
-    position: relative;
+}*/
+.Mine{
+    background-color: var(--main-dark-color);
+    float:left;
     border-radius: 10%;
+}
+.Other{
+    background-color: var(--main-light-color);
+    float: right;
+    border-radius: 10%;
+    margin-right: auto;
 }
 .Mes[type=text]{
     text-align: left;
@@ -73,17 +74,6 @@ width: fit-content;
     font-size: 25px;
 }
 
-.right-point{
-    width: 0;
-    height: 0;
-    border-left: 2vh solid transparent;
-    border-right: 2vh solid transparent;
-    border-top: 10vh solid var(--main-light-color);
-    position: absolute;
-    top: 45%;
-    right: -10%;
-    transform: rotate(-60deg);
-}
 .timer{
     color: dimgray;
     float: right;

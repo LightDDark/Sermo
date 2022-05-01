@@ -9,7 +9,7 @@ function handleVideo({ content }) {
 }
 
 function handleAudio({ content }) {
-  return <p>{content}</p>;
+  return <audio src={content}/>;
 }
 
 function handleImage({ content }) {

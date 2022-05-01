@@ -10,11 +10,11 @@ function PrintLog(props) {
     const timer = msg.date.getHours() + ":" + mins;
     console.log(msg.content.props.content);
     return (
-      <div className={classer} key={index}>
+      <div key={index}>
         <div className="box" key={index + length}>
           <div className="center" key={index + length + 1}>
             <div className="dialog-1" key={index + length + 2}>
-              
+              <div className={classer}>
               <div> {msg.type === 'image' &&
               <img src={msg.content.props.content} className="Mes-img" key={index + length + 4} alt="">
               </img>}
@@ -45,6 +45,7 @@ function PrintLog(props) {
               <div className="left-point" key={index + length + 3} />
             </div>
           </div>
+        </div>
         </div>
       </div>
     );
