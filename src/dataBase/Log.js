@@ -1,4 +1,7 @@
 import HandleContent from "./HandleContent";
+import image from '../../src/files/money.jpeg'
+import recording from "../../src/files/money.ogg"
+
 
 // class to store chat logs
 class Log {
@@ -8,13 +11,25 @@ class Log {
     this.messages = [
       {
         type: "text",
-        content: <HandleContent type={"text"} content={"a"} />,
+        content: <HandleContent type={"text"} content={"Dear Sir, I am prince Masigna Mbki from Nigeria."} />,
         user: "a",
         date: new Date(),
       },
       {
         type: "text",
-        content: <HandleContent type={"text"} content={"a"} />,
+        content: <HandleContent type={"text"} content={"I need your help."} />,
+        user: "a",
+        date: new Date(),
+      },
+      {
+        type: "image",
+        content: <HandleContent type={"image"} content={image} />,
+        user: "a",
+        date: new Date(),
+      },
+      {
+        type: "audio",
+        content: <HandleContent type={"audio"} content={recording} />,
         user: "a",
         date: new Date(),
       },

@@ -78,6 +78,7 @@ function MessageForm(props) {
               )}
             </label>
             <label
+                data-toggle="collapse"
                 ref={audioM}
                 className="audBut"
                 htmlFor="actual-btn-vid"

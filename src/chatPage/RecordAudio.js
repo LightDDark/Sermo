@@ -7,6 +7,7 @@ function RecordAudio(props) {
     const userName = props.userName;
     const [audioFileSrc,setAudioFileSrc] = useState(null);
     const [recProgress,setRecProgress] = useState(false);
+    const [toggle,setToggle] = useState(false);
     let audioIN = {audio: true};
     navigator.mediaDevices.getUserMedia(audioIN)
 
@@ -58,16 +59,17 @@ function RecordAudio(props) {
         function newAudioMessage() {
             log.newMessage("audio", audioFileSrc, userName);
             setActiveContact([activeContact[0], log]);
+            setToggle(true);
     }
     return (
-        <div>
+        <div id="toggle-id">
             <p>
                 <button id="btnStart">START RECORDING</button>
                 {recProgress && <label className="Prog">recording in progress...</label>}
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <button id="btnStop" >STOP RECORDING</button>
             </p>
-            <button className="Fl" onClick={newAudioMessage}>send audio</button>
+            <button className="Fl" type="submit" onClick={newAudioMessage}>send audio</button>
         </div>
     );
 }

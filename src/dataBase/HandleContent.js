@@ -13,7 +13,7 @@ function handleAudio({ content }) {
 }
 
 function handleImage({ content }) {
-  return <p/>;
+  return <img src={content} alt="couldnt show"/>;
 }
 
 const operMap = new Map()
