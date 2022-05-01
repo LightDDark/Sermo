@@ -1,6 +1,7 @@
 import HandleContent from "./HandleContent";
 import image from '../../src/files/simon.avif'
 import recording from "../../src/files/simon.ogg"
+import video from "../../src/files/simon.mp4"
 
 
 // class to store chat logs
@@ -22,14 +23,20 @@ class Log {
         date: new Date(),
       },
       {
-        type: "image",
-        content: <HandleContent type={"image"} content={image} />,
+        type: "video",
+        content: <HandleContent type={"video"} content={video} />,
         user: "maayanSh",
         date: new Date(),
       },
       {
         type: "audio",
         content: <HandleContent type={"audio"} content={recording} />,
+        user: "maayanSh",
+        date: new Date(),
+      },
+      {
+        type: "image",
+        content: <HandleContent type={"image"} content={image} />,
         user: "maayanSh",
         date: new Date(),
       },
