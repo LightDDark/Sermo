@@ -25,6 +25,16 @@ input[type="file"] {
     margin-top: 1rem;
 }
 .vidBut {
+    height: 38px;
+    background-color: midnightblue;
+    color: white;
+    padding: 0.5rem;
+    font-family: sans-serif;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+.audBut {
     background-color: midnightblue;
     color: white;
     padding: 0.5rem;
@@ -45,4 +55,11 @@ input[type="file"] {
 }
 .Fl{
     background-color: plum;
+    top:20%;
+}
+.Fl:hover{
+    transform: scale(1.5);
+}
+.Prog{
+    color: hotpink;
 }

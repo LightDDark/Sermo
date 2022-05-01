@@ -8,6 +8,7 @@ function PrintLog(props) {
       msg.user === props.userName ? "Container Mine" : "Container Other";
     const mins = msg.date.getMinutes()>9 ? msg.date.getMinutes() : '0' + msg.date.getMinutes();
     const timer = msg.date.getHours() + ":" + mins;
+    console.log(msg.content.props.content);
     return (
       <div className={classer} key={index}>
         <div className="box" key={index + length}>
